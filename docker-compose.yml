@@ -29,6 +29,16 @@ services:
        MYSQL_USER: fineract
        MYSQL_PASSWORD: mysql
 
+   fineract:
+     container_name: fineract_server
+     build: .
+     volumes:
+       - ./server.xml:/usr/local/tomcat/conf/server.xml
+       - ./entrypoint.sh:/entrypoint.sh
+     ports:
+       - 8443:443
+     restart: always
+
 volumes:
     db_data:
         external: true
